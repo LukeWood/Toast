@@ -1,4 +1,4 @@
-var toast = new (function init_toast(get_p,json_p,post_p){
+var Toast = new (function init_toast(get_p,json_p,post_p){
   "use strict";
 
   this.crossOrigin = false;
@@ -24,10 +24,7 @@ var toast = new (function init_toast(get_p,json_p,post_p){
   }
 
   //Supports a variety of parameters... get({object}, callback)... or just get({object});
-
-  //Passes back the response text to callback, or the fail status to fail.
-  function get(){
-    //PARAMETER PARSING
+  function parseArgs(){
     var url = arguments.length >= 1 ? arguments[0] : null, callback = arguments.length >= 2 ? arguments[1] : null, fail = arguments.length >= 3 ? arguments[2] : null;
 
     if(arguments.length == 0){
@@ -38,14 +35,21 @@ var toast = new (function init_toast(get_p,json_p,post_p){
     if(typeof arguments[0] === "object"){
 
         if(this.debug){
-          console.log("Argument 0 in function 'get' is an object, setting callback and fail accordingly.");
+          console.log("Argument 0 is an object, setting callback and fail accordingly.");
         }
 
         if(arguments[0].hasOwnProperty("callback")){callback = arguments[0].callback};
         if(arguments[0].hasOwnProperty("fail")){fail = arguments[0].fail};
         if(arguments[0].hasOwnProperty("url")){url = arguments[0].url};
     }
-    //END PARAMETER PARSING
+    return {url:url, callback:callback, fail:fail};
+  }
+
+  //Passes back the response text to callback, or the fail status to fail.
+  function get(){
+
+    var params = parseArgs.apply(this,arguments);
+    var url = params.url, callback = params.callback, fail=params.fail;
 
     //Allow cross origin requests.
     var x = this.crossOrigin ? CrossOriginRequest("GET",url) : new XMLHttpRequest();
@@ -74,11 +78,25 @@ var toast = new (function init_toast(get_p,json_p,post_p){
   }
 
   function json(){
-
+    var params = parseArgs.apply(this,arguments);
+    var url = params.url, callback = params.callback, fail=params.fail;
+    var tst = this;
+    get.call(this,url,function(responseText){
+      try{
+        var json_object = JSON.parse(responseText);
+        callback(json_object);
+      }
+      catch(e){
+        error("JSON could not be parsed for url '"+url+"'","json");
+        if(tst.debug){
+            console.error(e.message);
+        }
+      }
+    },fail);
   }
 
   function post(){
-
+      //coming soon
   }
 
   this.debug = false;
@@ -88,4 +106,8 @@ var toast = new (function init_toast(get_p,json_p,post_p){
 
 })("get","json","post");
 
+Toast.json({
+  url:"sample.json",
+  callback:console.log
+})
 // These parameters determing the naming convention used.
