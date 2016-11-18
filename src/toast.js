@@ -11,7 +11,16 @@ var toast = new (function init_toast(get_p,json_p,post_p){
 
   //Error logger
   function error(message,caller){
-      console.error("Toast Error: "+message+" in function '"+caller+"'");
+    console.error("Toast Error: "+message+" in function '"+caller+"'");
+  }
+
+  function CrossOriginRequest(method,url){
+    var x = new XMLHttpRequest();
+    if (typeof XDomainRequest != "undefined"){
+        x = new XDomainRequest();
+    }
+    x.open(method,url,true);
+    return x;
   }
 
   //Supports a variety of parameters... get({object}, callback)... or just get({object});
@@ -38,12 +47,13 @@ var toast = new (function init_toast(get_p,json_p,post_p){
     }
     //END PARAMETER PARSING
 
+    //Allow cross origin requests.
+    var x = this.crossOrigin ? CrossOriginRequest("GET",url) : new XMLHttpRequest();
+    if(!this.crossOrigin){
+      x.open("GET",url);
+    }
 
-    var x = new XMLHttpRequest();
-    x.open("GET",url,this.crossOrigin);
-    x.send(null);
-
-    x.onreadystatechange = function(){
+    function change_handler(){
         if(x.readyState === 4){
             if(x.status === 200){
               if(callback != null && typeof callback ==="function")
@@ -53,12 +63,14 @@ var toast = new (function init_toast(get_p,json_p,post_p){
               if(fail != null && typeof fail ==="function"){
                 fail(x.status);
               }else{
-                console.error("Request to "+url +" has failed.");
+                error("Request to "+url+" has failed ","get");
               }
             }
         }
-    };
+    }
 
+    x.onreadystatechange = change_handler;
+    x.send();
   }
 
   function json(){
@@ -75,6 +87,5 @@ var toast = new (function init_toast(get_p,json_p,post_p){
   this[post_p] = post.bind(this);
 
 })("get","json","post");
-toast.crossOrigin = true;
-toast.get("http://www.google.com",console.log);
+
 // These parameters determing the naming convention used.
