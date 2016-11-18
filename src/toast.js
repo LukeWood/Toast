@@ -1,5 +1,8 @@
 var toast = new (function init_toast(get_p,json_p,post_p){
   "use strict";
+
+  this.crossOrigin = false;
+
   // We only support modern browsers.
   if(!window.XMLHttpRequest){
       console.error("Toast needs XMLHttpRequest to work");
@@ -37,7 +40,7 @@ var toast = new (function init_toast(get_p,json_p,post_p){
 
 
     var x = new XMLHttpRequest();
-    x.open("GET",url);
+    x.open("GET",url,this.crossOrigin);
     x.send(null);
 
     x.onreadystatechange = function(){
@@ -72,5 +75,6 @@ var toast = new (function init_toast(get_p,json_p,post_p){
   this[post_p] = post.bind(this);
 
 })("get","json","post");
+toast.crossOrigin = true;
 toast.get("http://www.google.com",console.log);
 // These parameters determing the naming convention used.
