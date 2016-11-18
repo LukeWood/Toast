@@ -1,5 +1,6 @@
-var Toast = new (function init_toast(get_p,json_p,post_p){
+(function(name){
   "use strict";
+  var toast = new (function init_toast(get_p,json_p,post_p){
 
   this.crossOrigin = false;
 
@@ -65,7 +66,7 @@ var Toast = new (function init_toast(get_p,json_p,post_p){
             }
             else{
               if(fail != null && typeof fail ==="function"){
-                fail(x.status);
+                fail(x.statusText);
               }else{
                 error("Request to "+url+" has failed ","get");
               }
@@ -105,9 +106,9 @@ var Toast = new (function init_toast(get_p,json_p,post_p){
   this[post_p] = post.bind(this);
 
 })("get","json","post");
+  window[name] = toast;
+})("Toast");
 
-Toast.json({
-  url:"sample.json",
-  callback:console.log
-})
+Toast.json("sample.json",console.log,console.error);
+
 // These parameters determing the naming convention used.
