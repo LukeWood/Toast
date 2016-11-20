@@ -59,3 +59,4 @@ Make requests.  You can make calls to toast either listing your parameters in a 
        fail:console.error
     });
 ```
+Note:  Parameters are encoded into the url, support for JSON in the body is coming in release 1.0.1
