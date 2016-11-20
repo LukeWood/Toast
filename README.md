@@ -31,7 +31,7 @@ Make requests.  You can make calls to toast either listing your parameters in a 
     }, console.error);
     
 ```
-**You can also give your options in a single object**
+**You can also give your options in an object**
 ```javascript
 
     //plain text
@@ -47,4 +47,15 @@ Make requests.  You can make calls to toast either listing your parameters in a 
         fail:console.error
     });
     
+```
+**Post requests only support the object style of passing parameters
+```javascript
+    Toast.post({
+       url:"test.php",
+       params:{
+           "param1":true
+       },
+       success:alert,
+       fail:console.error
+    });
 ```
