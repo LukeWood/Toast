@@ -122,7 +122,6 @@
 
         x.onreadystatechange = change_handler;
         x.send(params);
-        
       }
 
       this[get_p] = get.bind(this);
@@ -139,7 +138,5 @@
     }
 })("Toast");
 //You can invoke this with null to get global functions for get,getJSON, and post
-
-Toast.getJSON("sample.json",console.log,console.error);
 
 // These parameters determing the naming convention used.
