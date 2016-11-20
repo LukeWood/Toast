@@ -12,14 +12,14 @@ Include the javascript file list under the dist folder in your webpage.
 ```
 Step 2:
 Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
+
+**You can give parameters in a comma separated form**
 ```javascript
-    /*
-      You can list all of your parameters out by comma
-    */
+
     // Response is plain text
     // Errors are logged to console.error
     // url, success, fail
-    Toast.getJSON("sample.html",function(data){
+    Toast.get("sample.html",function(data){
         document.getElementById("sample").innerHTML = data;
     }, console.error);
     
@@ -30,6 +30,21 @@ Make requests.  You can make calls to toast either listing your parameters in a 
         document.getElementById("sample").innerHTML = JSON.stringify(data);
     }, console.error);
     
-    
+```
+**You can also give your options in a single object**
+```javascript
+
+    //plain text
+    Toast.get({
+        url:"sample.html",
+        success:alert,
+        fail:console.error
+    });
+    //json
+    Toast.getJSON({
+        url:"sample.html",
+        success:alert,
+        fail:console.error
+    });
     
 ```
