@@ -2,6 +2,7 @@
     "use strict";
     function init_toast(get_p,json_p,post_p){
       this.crossOrigin = false;
+      this.debug = false;
 
       // We only support modern browsers.
       if(!window.XMLHttpRequest){
@@ -95,13 +96,35 @@
         },fail);
       }
 
-      function post(){
-        var params = parseArgs.apply(this,arguments);
-        var url = params.url, callback = params.callback, fail=params.fail;
+      function post(options){
+        var url = options.url, callback = options.callback, fail=options.fail, params = options.params;
+        var x = this.crossOrigin ? CrossOriginRequest("POST",url) : new XMLHttpRequest();
+        if(!this.crossOrigin){
+            x.open("POST",url);
+        }
+        x.setRequestHeader("Content-type","applications/x-www-form-urlencoded");
 
+        function change_handler(){
+            if(x.readyState === 4){
+                if(x.status === 200){
+                  if(callback != null && typeof callback ==="function")
+                  callback(x.responseText);
+                }
+                else{
+                  if(fail != null && typeof fail ==="function"){
+                    fail(x.statusText);
+                  }else{
+                    error("Request to "+url+" has failed ","get");
+                  }
+                }
+            }
+        }
+
+        x.onreadystatechange = change_handler;
+        x.send(params);
+        
       }
 
-      this.debug = false;
       this[get_p] = get.bind(this);
       this[json_p] = json.bind(this);
       this[post_p] = post.bind(this);
