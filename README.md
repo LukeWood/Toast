@@ -48,7 +48,7 @@ Make requests.  You can make calls to toast either listing your parameters in a 
     });
     
 ```
-**Post requests only support the object style of passing parameters
+**Post requests only support the object style of passing parameters**
 ```javascript
     Toast.post({
        url:"test.php",
