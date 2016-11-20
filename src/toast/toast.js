@@ -96,6 +96,13 @@
         },fail);
       }
 
+      function encode_params(params){
+          var strval = "";
+          for(var key in params){
+              strval += encodeURIComponent(key)+"="+encodeURIComponent(params[key])+"&";
+          }
+          return strval;
+      }
       function post(options){
         var url = options.url, callback = options.callback, fail=options.fail, params = options.params;
         var x = this.crossOrigin ? CrossOriginRequest("POST",url) : new XMLHttpRequest();
@@ -121,7 +128,7 @@
         }
 
         x.onreadystatechange = change_handler;
-        x.send(params);
+        x.send(encode_params(params)));
       }
 
       this[get_p] = get.bind(this);
