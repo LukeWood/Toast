@@ -1,0 +1,27 @@
+{
+  "name": "toast",
+  "version": "1.0.0",
+  "description": "XMLHttpRequest Library",
+  "main": "build.js",
+  "dependencies": {
+    "node-minify": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeWoodSMU/toast.git"
+  },
+  "keywords": [
+    "XMLHttpRequest",
+    "AJAX"
+  ],
+  "author": "Luke Wood",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LukeWoodSMU/toast/issues"
+  },
+  "homepage": "https://github.com/LukeWoodSMU/toast#readme"
+}
