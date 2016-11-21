@@ -1,5 +1,5 @@
 # Toast
-<img src="docs/Toast.png"></img>
+<img src="docs/Toast.png"></img></br>
 Toast is a library designed to simplify making XMLHttpRequests.  I've found myself including jquery just for ajax many times and thats a huge amount of overhead. I wanted to create a library that simplifies making these requests while still being lightweight and simple.
 
 # Usage
