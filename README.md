@@ -16,19 +16,15 @@ Make requests.  You can make calls to toast either listing your parameters in a 
 **You can give parameters in a comma separated form**
 ```javascript
 
-    // Response is plain text
-    // Errors are logged to console.error
-    // url, success, fail
-    Toast.get("sample.html",function(data){
-        document.getElementById("sample").innerHTML = data;
-    }, console.error);
-    
-    // Response is parsed into json form 'sample.json'
-    // Errors are logged to console.error
-    //  url, success, fail
-    Toast.getJSON("sample.json",function(data){
-        document.getElementById("sample").innerHTML = JSON.stringify(data);
-    }, console.error);
+// Response is plain text
+// Errors are logged to console.error because the second parameter is the failure callback
+// url, success, fail
+Toast.get("sample.html",alert, console.error);
+
+// Response is parsed into json form 'sample.json'
+// Errors are logged to console.error
+//  url, success, fail
+Toast.getJSON("sample.json",alert, console.error);
     
 ```
 **You can also give your options in an object**
