@@ -1,4 +1,5 @@
 # Toast
+<img src="docs/Toast.png"></img>
 Toast is a library designed to simplify making XMLHttpRequests.  I've found myself including jquery just for ajax many times and thats a huge amount of overhead. I wanted to create a library that simplifies making these requests while still being lightweight and simple.
 
 # Usage
@@ -58,7 +59,11 @@ Toast.post({
 ```
 Note:  Parameters are encoded into the url, support for JSON in the body is coming in release 1.0.1
 
-#MIT License
+# Mascot
+The current mascot is taken from an image labeled for reuse without modification by kusodesign
+http://kusodesign.deviantart.com/art/Pancake-and-Butter-441201321
+
+# MIT License
 
 Copyright (c) 2016 Luke Wood
 
