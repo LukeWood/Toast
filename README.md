@@ -34,30 +34,31 @@ Make requests.  You can make calls to toast either listing your parameters in a 
 **You can also give your options in an object**
 ```javascript
 
-    //plain text
-    Toast.get({
-        url:"sample.html",
-        success:alert,
-        fail:console.error
-    });
-    //json
-    Toast.getJSON({
-        url:"sample.html",
-        success:alert,
-        fail:console.error
-    });
+//plain text
+Toast.get({
+    url:"sample.html",
+    success:alert,
+    fail:console.error
+});
+
+//json
+Toast.getJSON({
+    url:"sample.html",
+    success:alert,
+    fail:console.error
+});
     
 ```
 **Post requests only support the object style of passing parameters**
 ```javascript
-    Toast.post({
-       url:"test.php",
-       params:{
-           "param1":true
-       },
-       success:alert,
-       fail:console.error
-    });
+Toast.post({
+    url:"test.php",
+    params:{
+        "param1":true
+    },
+    success:alert,
+    fail:console.error
+});
 ```
 Note:  Parameters are encoded into the url, support for JSON in the body is coming in release 1.0.1
 
