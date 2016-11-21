@@ -61,8 +61,8 @@ Toast.post({
 Note:  Parameters are encoded into the url, support for JSON in the body is coming in release 1.0.1
 
 # Mascot
-The current mascot is taken from an image labeled for reuse without modification by kusodesign
-http://kusodesign.deviantart.com/art/Pancake-and-Butter-441201321
+The current mascot is taken from an image labeled for reuse with modification by Deviant Art user One-Sided-Pancake
+http://one-sided-pancake.deviantart.com/
 
 # MIT License
 
