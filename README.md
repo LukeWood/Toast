@@ -39,7 +39,7 @@ Toast.get({
 
 //json
 Toast.getJSON({
-    url:"sample.html",
+    url:"sample.json",
     success:alert,
     fail:console.error
 });
