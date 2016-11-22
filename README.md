@@ -95,6 +95,10 @@ Toast.crossOrigin = true;
 The current mascot is taken from an image labeled for reuse with modification by Deviant Art user One-Sided-Pancake
 http://one-sided-pancake.deviantart.com/
 
+# Contact
+If anyone has any issues with this library please do not hesitate to open an issue on Github!  Furthermore, if you have a feature suggestion do the same.  </br>
+For any other questions please email me at (lukewoodcs@gmail.com)[mailto:lukewoodcs@gmail.com]
+
 # MIT License
 
 Copyright (c) 2016 Luke Wood
