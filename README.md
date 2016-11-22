@@ -15,7 +15,7 @@ Include the javascript file list under the dist folder in your webpage.
 Step 2:
 Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
 
-**Magic String Callbacks**
+**Magic String Callbacks**</br>
 One of Toast's coolest features is it's ability to use strings as a callback.  This is really useful if you want only want a short callback.</br>
 Toast's string callbacks user a 'magic' keyword data in them.  See below an example of Toast's magic string callbacks.
 ```javascript
