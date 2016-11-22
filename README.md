@@ -15,7 +15,8 @@ Include the javascript file list under the dist folder in your webpage.
 Step 2:
 Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
 
-**Magic String Callbacks**</br>
+## Magic String Callbacks
+
 One of Toast's coolest features is it's ability to use strings as a callback.  This is really useful if you want only want a short callback.</br>
 Toast's string callbacks user a 'magic' keyword data in them.  See below an example of Toast's magic string callbacks.
 ```javascript
@@ -33,7 +34,7 @@ Toast.get("sample.html",
 */
 ```
 
-**You can give parameters in a comma separated form**
+## You can give parameters in a comma separated form
 ```javascript
 
 // Response is plain text
@@ -47,7 +48,7 @@ Toast.get("sample.html",alert, console.error);
 Toast.getJSON("sample.json",alert, console.error);
 
 ```
-**You can also give your options in an object**
+## You can also give your options in an object
 ```javascript
 
 //plain text
@@ -65,7 +66,7 @@ Toast.getJSON({
 });
 
 ```
-**Post requests only support the object style of passing parameters**
+## Post requests only support the object style of passing parameters
 ```javascript
 Toast.post({
     url:"test.php",
@@ -78,7 +79,7 @@ Toast.post({
 ```
 Note:  Parameters are encoded into the url, support for JSON in the body is coming in release 1.0.1
 
-**Cross Origin Requests**
+## Cross Origin Requests
 Enabling cross origin requests is really easy with toast.  After including the latest release of toast, simply set the attribute crossOrigin to true.
 ```javascript
 /*
