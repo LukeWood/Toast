@@ -60,6 +60,18 @@ Toast.post({
 ```
 Note:  Parameters are encoded into the url, support for JSON in the body is coming in release 1.0.1
 
+**Cross Origin Requests**
+Enabling cross origin requests is really easy with toast.  After including the latest release of toast, simply set the attribute crossOrigin to true.
+```
+/*
+    Cross origin requests don't work!
+*/
+Toast.crossOrigin = true;
+/*
+    Cross origin requests here work
+*/
+```
+
 # Mascot
 The current mascot is taken from an image labeled for reuse with modification by Deviant Art user One-Sided-Pancake
 http://one-sided-pancake.deviantart.com/
