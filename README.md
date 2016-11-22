@@ -22,10 +22,12 @@ Toast's string callbacks user a 'magic' keyword data in them.  See below an exam
 /*
     The magic variable data holds the contents of sample.html or the error message.
 */
+
 Toast.get("sample.html",
     "console.log(data)",
     "console.error(data)"
 );
+
 /*
     data is only accessible within the scope of your string callback preventing magic callbacks from interfering with the rest of your program
 */
