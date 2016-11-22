@@ -96,7 +96,7 @@ The current mascot is taken from an image labeled for reuse with modification by
 http://one-sided-pancake.deviantart.com/
 
 # Contact
-If anyone has any issues with this library please do not hesitate to open an issue on Github!  Furthermore, if you have a feature suggestion do the same.  </br>
+If anyone has any issues with this library please do not hesitate to open an issue on Github!  Furthermore, if you have a feature suggestion do the same.  </br></br>
 For any other questions please do not hesitate to email me at [lukewoodcs@gmail.com](mailto:lukewoodcs@gmail.com)!
 
 # MIT License
