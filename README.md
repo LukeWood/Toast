@@ -15,31 +15,6 @@ Include the javascript file list under the dist folder in your webpage.
 Step 2:
 Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
 
-## The Unique Feature of Toast: Magic String Callbacks
-
-One of Toast's coolest features is it's ability to use strings as a callback.  This is really useful if you want only want a short callback.</br>
-Toast's string callbacks user a 'magic' keyword data in them.  See below an example of Toast's magic string callbacks.
-```javascript
-//  The magic variable data holds the contents of sample.html or the error message.
-
-Toast.get("sample.html",
-    "console.log(data)",
-    "console.error(data)"
-);
-// data is only accessible within the scope of the callback
-console.log(data);
-// data is undefined
-
-// Example using object parameter instead of comma delimited
-Toast.get({
-    url:"sample.html",
-    callback:"console.log(data)",
-    fail:"console.error(data)"
-});
-```
-Magic callbacks are a great way to implement one liner callbacks.</br></br>
-**Never Dynamically Concatenate Strings to Callbacks**</br>
-
 ## You can give parameters in a comma separated form
 ```javascript
 
@@ -72,6 +47,32 @@ Toast.getJSON({
 });
 
 ```
+
+## The Unique Feature of Toast: Magic String Callbacks
+
+One of Toast's coolest features is it's ability to use strings as a callback.  This is really useful if you want only want a short callback.</br>
+Toast's string callbacks user a 'magic' keyword data in them.  See below an example of Toast's magic string callbacks.
+```javascript
+//  The magic variable data holds the contents of sample.html or the error message.
+
+Toast.get("sample.html",
+    "console.log(data)",
+    "console.error(data)"
+);
+// data is only accessible within the scope of the callback
+console.log(data);
+// data is undefined
+
+// Example using object parameter instead of comma delimited
+Toast.get({
+    url:"sample.html",
+    callback:"console.log(data)",
+    fail:"console.error(data)"
+});
+```
+Magic callbacks are a great way to implement one liner callbacks.</br></br>
+**Never Dynamically Concatenate Strings to Callbacks**</br>
+
 ## Post requests only support the object style of passing parameters
 ```javascript
 Toast.post({
