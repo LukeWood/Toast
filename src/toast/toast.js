@@ -43,6 +43,12 @@
             if(arguments[0].hasOwnProperty("fail")){fail = arguments[0].fail};
             if(arguments[0].hasOwnProperty("url")){url = arguments[0].url};
         }
+        if(typeof callback === "string"){
+          callback = new Function("data",callback);
+        }
+        if(typeof fail ==="string"){
+          fail = new Function("data",callback);
+        }
         return {url:url, callback:callback, fail:fail};
       }
 
@@ -105,6 +111,12 @@
       }
       function post(options){
         var url = options.url, callback = options.callback, fail=options.fail, params = options.params;
+        if(typeof callback === "string"){
+          callback = new Function("data",callback);
+        }
+        if(typeof fail ==="string"){
+          fail = new Function("data",callback);
+        }
         var x = this.crossOrigin ? CrossOriginRequest("POST",url) : new XMLHttpRequest();
         if(!this.crossOrigin){
             x.open("POST",url);
@@ -143,6 +155,7 @@
     else{
       window[name] = new init_toast("get","getJSON","post");
     }
+
 })("Toast");
 //You can invoke this with null to get global functions for get,getJSON, and post
 
