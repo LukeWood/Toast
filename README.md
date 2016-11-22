@@ -62,7 +62,7 @@ Note:  Parameters are encoded into the url, support for JSON in the body is comi
 
 **Cross Origin Requests**
 Enabling cross origin requests is really easy with toast.  After including the latest release of toast, simply set the attribute crossOrigin to true.
-```
+```javascript
 /*
     Cross origin requests don't work!
 */
