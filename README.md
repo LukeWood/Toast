@@ -24,7 +24,11 @@ Toast's string callbacks user a 'magic' keyword data in them.  See below an exam
 */
 Toast.get("sample.html",
     "console.log(data)",
-    "console.error(data)");
+    "console.error(data)"
+);
+/*
+    data is only accessible within the scope of your string callback preventing magic callbacks from interfering with the rest of your program
+*/
 ```
 
 **You can give parameters in a comma separated form**
