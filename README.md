@@ -97,6 +97,11 @@ Toast.crossOrigin = true;
     Cross origin requests here work
 */
 ```
+# Additional Debugging
+Some debug messages are disabled by default, you can enable the extra messages like this:
+```javascript
+Toast.debug = true;
+```
 
 # Mascot
 The current mascot is taken from an image labeled for reuse with modification by Deviant Art user One-Sided-Pancake
