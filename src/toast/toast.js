@@ -15,20 +15,29 @@
         console.error("Toast Error: "+message+" in function '"+caller+"'");
       }
 
+      // Centralized cross origin request so that 2
       function CrossOriginRequest(method,url){
         var x = new XMLHttpRequest();
-        if (typeof XDomainRequest != "undefined"){
+        if (typeof XDomainRequest !== "undefined"){
             x = new XDomainRequest();
         }
         x.open(method,url,true);
         return x;
       }
 
+
+      //URL parameter encoding
+      function encode_params(params){
+        var strval = "?";
+        for(var key in params){
+          strval += encodeURIComponent(key)+"="+encodeURIComponent(params[key])+"&";
+        }
+        return strval.slice(0,-1);
+      }
       //Supports a variety of parameters... get({object}, callback)... or just get({object});
       function parseArgs(){
 
         if(arguments.length == 0){
-
           if(this.debug){
             error("No arguments passed.", "parseArgs");
           }
@@ -48,7 +57,6 @@
             if(arguments[0].hasOwnProperty("url")){url = arguments[0].url};
             if(arguments[0].hasOwnProperty("params")){params = arguments[0].params};
         }
-
         else if(this.debug){
             console.log("Arguments are being passed in comma separated format.");
         }
@@ -66,19 +74,20 @@
             error("params were not passed as an object","parseArgs");
           }
         }
+
         return {url:url, callback:callback, fail:fail, params:params};
       }
 
       //Passes back the response text to callback, or the fail status to fail.
       function get(){
 
-        var params = parseArgs.apply(this,arguments);
-        var url = params.url, callback = params.callback, fail=params.fail;
+        var args = parseArgs.apply(this,arguments);
+        var url = args.url, callback = args.callback, fail=args.fail, params = args.params;
 
         //Allow cross origin requests.
-        var x = this.crossOrigin ? CrossOriginRequest("GET",url) : new XMLHttpRequest();
+        var x = this.crossOrigin ? CrossOriginRequest("GET",url+encode_params(params)) : new XMLHttpRequest();
         if(!this.crossOrigin){
-          x.open("GET",url);
+          x.open("GET",url+encode_params(params));
         }
 
         function change_handler(){
@@ -102,34 +111,31 @@
       }
 
       function json(){
-        var params = parseArgs.apply(this,arguments);
-        var url = params.url, callback = params.callback, fail=params.fail;
-        var tst = this;
-        get.call(this,url,function(responseText){
-          try{
-            var json_object = JSON.parse(responseText);
-            callback(json_object);
-          }
-          catch(e){
-            error("JSON could not be parsed for url '"+url+"'","json");
-            if(tst.debug){
-                console.error(e.message);
+        var args = parseArgs.apply(this,arguments);
+        var url = args.url, callback = args.callback, fail=args.fail, params = args.params;
+
+        var back_ref = this;
+        get.call(this,url+encode_params(params),
+          function(responseText){
+            try{
+              var json_object = JSON.parse(responseText);
+              callback(json_object);
             }
-          }
+            catch(e){
+              fail(e.message);
+              if(back_ref.debug){
+                  error("JSON could not be parsed for url '"+url+"'","json");
+                  console.error(e.message);
+              }
+            }
         },fail);
+
       }
 
 
-      function encode_params(params){
-          var strval = "";
-          for(var key in params){
-              strval += encodeURIComponent(key)+"="+encodeURIComponent(params[key])+"&";
-          }
-          return strval;
-      }
       function post(options){
         var options = parseArgs(options);
-        var url = options.url, callback = options.callback, fail=options.fail, params = options.params;
+        var url = options.url, callback = options.callback, fail=options.fail, params = options.params != null ? JSON.stringify(options.params) : null;
 
         if(typeof callback === "string"){
           callback = new Function("data",callback);
@@ -141,7 +147,6 @@
         if(!this.crossOrigin){
             x.open("POST",url);
         }
-        x.setRequestHeader("Content-type","applications/x-www-form-urlencoded");
 
         function change_handler(){
             if(x.readyState === 4){
@@ -160,7 +165,13 @@
         }
 
         x.onreadystatechange = change_handler;
-        x.send(encode_params(params));
+        if(options != null){
+          x.setRequestHeader("Content-type", "application/json; charset=utf-8");
+          x.setRequestHeader("Content-length", params.length);
+          x.setRequestHeader("Connection", "close");
+          x.send(params);
+        }
+
       }
 
       this[get_p] = get.bind(this);
