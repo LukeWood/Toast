@@ -1,5 +1,6 @@
 var compressor = require("node-minify");
 var config = require("./config.js");
+var fs = require("fs");
 
 var min_path="../dist/toast-"+config.version+".min.js";
 var path="../dist/toast-"+config.version+".js";
@@ -14,3 +15,5 @@ compressor.minify({
       }
     }
 });
+
+fs.createReadStream('toast/toast.js').pipe(fs.createWriteStream(path));

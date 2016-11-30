@@ -4,6 +4,7 @@
   "description": "XMLHttpRequest Library",
   "main": "build.js",
   "dependencies": {
+    "fs": "0.0.1-security",
     "node-minify": "^2.0.0"
   },
   "devDependencies": {},
