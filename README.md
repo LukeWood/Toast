@@ -8,11 +8,15 @@ Toast is a library designed to simplify making XMLHttpRequests.  I've found myse
 Using Toast is really easy.  
 
 Step 1:
+Download the file here:
+</br> [Minified Release](dist/toast-1.0.1.min.js)
+</br> [UnMinified Version](dist/toast-1.0.1.js)
+Step 2:
 Include the javascript file list under the dist folder in your webpage.
 ```html
 <script src="dist/toast-1.0.1.min.js"></script>
 ```
-Step 2:
+Step 3:
 Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
 
 ## You can give parameters in a comma separated form
