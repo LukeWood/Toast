@@ -26,30 +26,47 @@
 
       //Supports a variety of parameters... get({object}, callback)... or just get({object});
       function parseArgs(){
-        var url = arguments.length >= 1 ? arguments[0] : null, callback = arguments.length >= 2 ? arguments[1] : null, fail = arguments.length >= 3 ? arguments[2] : null;
 
         if(arguments.length == 0){
-          error("No arguments passed", "get");
+
+          if(this.debug){
+            error("No arguments passed.", "parseArgs");
+          }
           return;
         }
+
+        var url = arguments.length >= 1 ? arguments[0] : null, callback = arguments.length >= 2 ? arguments[1] : null, fail = arguments.length >= 3 ? arguments[2] : null, params = arguments.length >= 4 ? arguments[3] : null;
 
         if(typeof arguments[0] === "object"){
 
             if(this.debug){
-              console.log("Argument 0 is an object, setting callback and fail accordingly.");
+              console.log("Argument 0 is an object, arguments are being parsed as an object");
             }
 
             if(arguments[0].hasOwnProperty("callback")){callback = arguments[0].callback};
             if(arguments[0].hasOwnProperty("fail")){fail = arguments[0].fail};
             if(arguments[0].hasOwnProperty("url")){url = arguments[0].url};
+            if(arguments[0].hasOwnProperty("params")){params = arguments[0].params};
         }
+
+        else if(this.debug){
+            console.log("Arguments are being passed in comma separated format.");
+        }
+
         if(typeof callback === "string"){
           callback = new Function("data",callback);
         }
+
         if(typeof fail ==="string"){
           fail = new Function("data",callback);
         }
-        return {url:url, callback:callback, fail:fail};
+        if(typeof params !== "object"){
+          params = null;
+          if(this.debug){
+            error("params were not passed as an object","parseArgs");
+          }
+        }
+        return {url:url, callback:callback, fail:fail, params:params};
       }
 
       //Passes back the response text to callback, or the fail status to fail.
@@ -102,6 +119,7 @@
         },fail);
       }
 
+
       function encode_params(params){
           var strval = "";
           for(var key in params){
@@ -110,7 +128,9 @@
           return strval;
       }
       function post(options){
+        var options = parseArgs(options);
         var url = options.url, callback = options.callback, fail=options.fail, params = options.params;
+
         if(typeof callback === "string"){
           callback = new Function("data",callback);
         }
@@ -140,7 +160,7 @@
         }
 
         x.onreadystatechange = change_handler;
-        x.send(encode_params(params)));
+        x.send(encode_params(params));
       }
 
       this[get_p] = get.bind(this);

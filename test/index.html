@@ -1,0 +1,24 @@
+<html>
+<head>
+
+  <script src="../dist/toast-1.0.1.min.js"></script>
+
+</head>
+
+<body>
+  <div id="Done"></div>
+  <script>
+
+  Toast.crossOrigin = false;
+  Toast.debug = true;
+
+  Toast.get({
+    url:"http://esprima.org/demo/validate.html",
+    callback:"document.getElementById('Done').innerHTML = data;",
+    fail:console.error,
+    params:null
+  });
+  </script>
+</body>
+
+</html>
