@@ -10,7 +10,7 @@ Using Toast is really easy.
 Step 1:
 Include the javascript file list under the dist folder in your webpage.
 ```html
-<script src="dist/toast-1.0.0.min.js"></script>
+<script src="dist/toast-1.0.1.min.js"></script>
 ```
 Step 2:
 Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
@@ -73,7 +73,7 @@ Toast.get({
 Magic callbacks are a great way to implement one liner callbacks.</br></br>
 **Never Dynamically Concatenate Strings to Callbacks**</br>
 
-## Post requests only support the object style of passing parameters
+## Post requests post the parameters as JSON contained within the post body
 ```javascript
 Toast.post({
     url:"test.php",
@@ -84,7 +84,6 @@ Toast.post({
     fail:console.error
 });
 ```
-Note:  Parameters are encoded into the url, support for JSON in the body is coming in release 1.0.1
 
 ## Cross Origin Requests
 Enabling cross origin requests is really easy with toast.  After including the latest release of toast, simply set the attribute crossOrigin to true.
