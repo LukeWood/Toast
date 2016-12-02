@@ -133,8 +133,8 @@
       }
 
 
-      function post(options){
-        var options = parseArgs(options);
+      function post(){
+        var options = parseArgs.apply(this,arguments);
         var url = options.url, callback = options.callback, fail=options.fail, params = options.params != null ? JSON.stringify(options.params) : null;
 
         if(typeof callback === "string"){
