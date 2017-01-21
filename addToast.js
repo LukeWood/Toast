@@ -1,9 +1,10 @@
-var release = require("./src/config.js");
+#!/usr/bin/env node
+var config = require("./src/config.js");
 var min_path="./dist/toast-"+config.version+".min.js";
 var outpath = "Toast.js";
 
 var fs = require('fs');
-require.extensions['.txt'] = function (module, filename) {
+require.extensions['.js'] = function (module, filename) {
     module.exports = fs.readFileSync(filename, 'utf8');
 };
 

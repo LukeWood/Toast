@@ -1,6 +1,6 @@
 {
   "name": "httptoast",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An xmlhttplibrary",
   "main": "none",
   "directories": {
@@ -9,9 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin":{
-    "toasthere":"addToast.js"
-  },
+  "bin":{"toasthere":"addToast.js"},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LukeWoodSMU/Toast.git"
