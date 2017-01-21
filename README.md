@@ -25,7 +25,7 @@ You can also use npm to get Toast.
 ```bash
 npm install -g httptoast
 ```
-Then, after Toast has been installed you can easily add it to a project by running the following:
+Then, after Toast has been installed you can easily copy the client side script to your current directory by running the following:
 ```bash
 toasthere
 ```
