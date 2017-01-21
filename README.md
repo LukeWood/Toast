@@ -19,6 +19,13 @@ Include the javascript file list under the dist folder in your webpage.
 ```
 Step 3:</br>
 Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
+
+## npm
+You can also use npm to get Toast.
+```bash
+npm install httptoast
+```
+
 # 2 Minute Tutorial
 ## Make a basic request
 ```javascript
