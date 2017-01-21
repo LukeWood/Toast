@@ -1,4 +1,4 @@
-var release = require("./src/config.json");
+var release = require("./src/config.js");
 var min_path="./dist/toast-"+config.version+".min.js";
 var outpath = "Toast.js";
 
