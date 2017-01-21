@@ -23,7 +23,11 @@ Make requests.  You can make calls to toast either listing your parameters in a 
 ## npm
 You can also use npm to get Toast.
 ```bash
-npm install httptoast
+npm install -g httptoast
+```
+Then, after Toast has been installed you can easily add it to a project by running the following:
+```bash
+toasthere
 ```
 
 # 2 Minute Tutorial
