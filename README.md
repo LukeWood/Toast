@@ -6,30 +6,18 @@ Toast is a library designed to simplify making XMLHttpRequests.  I've found myse
 
 # Usage
 
-Using Toast is really easy.  
-
-Step 1:</br>
-Download the javascript file for Toast here:
-</br> [Minified Release](dist/toast-1.0.1.min.js)
-</br> [UnMinified Version](dist/toast-1.0.1.js)</br>
-Step 2:
-Include the javascript file list under the dist folder in your webpage.
-```html
-<script src="dist/toast-1.0.1.min.js"></script>
-```
-Step 3:</br>
-Make requests.  You can make calls to toast either listing your parameters in a comma separated way, or using an options JSON object.  Here are some sample ones:
-
-## npm
-You can also use npm to get Toast.
+Using Toast is really easy.  To get the script, globally install the toast module.
 ```bash
 npm install -g httptoast
 ```
 Then, after Toast has been installed you can easily copy the client side script to your current directory by running the following:
 ```bash
-toasthere
+toast
 ```
-
+Then all you have to do is include the following in your html document.
+```html
+<script src="Toast.js"></script>
+```
 # 2 Minute Tutorial
 ## Make a basic request
 ```javascript
